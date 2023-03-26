@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            counter-reset: my-sec-counter;
+            text-align:center ;
+        }
+        #sr_no::before{
+            counter-increment: my-sec-counter;
+            content: counter(my-sec-counter);
+        }
+        table, tr, th{
+            border: 1px solid black;
+        }
+        th, td {
+            background-color: #faf876;
+            text-align: center;
+        }
+        table{
+            width: 80%;
+        }
+        .center{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        td:hover{
+            background-color:rgb(135, 248, 224);
+        }
+        .del:hover{
+            background-color: #fa5b5b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Notes</h1>
+    <table class="center">
+        <tr>
+            <th width="10%">Sr. No</th>
+            <th width="25%">Title</th>
+            <th width="50%">Note</th>
+            <th width="15%">Action</th>
+        </tr>
+    </table>
+    {% for key, value in data.items() %}
+    <table class="center">
+        <tr>
+            <td id="sr_no" width="10%"></td>
+            <td width="25%">{{ key }}</td>
+            <td width="50%">{{ value }}</td>
+            <td width="15%" class="del"><form action="{{ url_for('deleteNote') }}" method='delete'><button>Delete</button></form></td>
+        </tr>
+    </table>
+    {% endfor %}
+    <br>
+    <br>
+    <form action="{{ url_for('home') }}" method='get'>
+        <button>Back to Home</button>
+    </form>
+</body>
+</html>

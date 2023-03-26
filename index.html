@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .center{
+            text-align: center;
+            border-radius: 10cm;
+        }
+        h1{
+            color: rgb(250, 11, 11);
+        }
+        input, textarea{
+            border: 2px;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body class="center">
+    <h1>Welcome To Note App</h1>
+    <form action="{{ url_for('index') }}" method='post'>
+        <input type="text" name="title" placeholder="Add Note Title" ><br><br>
+        <textarea rows="15" cols="21" name="note" placeholder="Type Your Note Here..." size="70cm"></textarea><br>
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>
